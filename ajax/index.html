@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Display Local File Content</title>
+<style>
+  body {
+    background-color: #c55858;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+  }
+  #fileContent {
+    margin: 20px;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    text-align: center;
+  }
+  .center {
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Local File Content</h1>
+<div class="center">
+    <button onclick="displayFile()">Display File</button>
+  </div>
+<div id="fileContent"></div>
+
+
+<script>
+function displayFile() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("fileContent").innerHTML = this.responseText;
+    }
+  };
+  
+  xhttp.open("GET", "file.txt", true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
